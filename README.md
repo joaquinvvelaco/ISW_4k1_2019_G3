@@ -3,7 +3,7 @@ Este repositorio tiene la finalidad de gestionar y mantener los documentos y arc
 
 |Item|Nombre|Ubicacion|
 |----|------|---------|
-|Modalidad Academica|ModalidadAcademica<<aaaa>>_C<<c>>.pdf|/ModalidadAcademica|
+|Modalidad Academica|ModalidadAcademica<<aaaa>>_C´<´c>.pdf|/ModalidadAcademica|
 |Enunciados Trabajos Practicos|TrabajosPracticos.pdf|/Practico/Trabajos Practicos|
 |Enunciados Trabajos Conceptuales|TrabajosConceptuales.pdf|/Teorico/Trabajos Conceptuales|
 |Trabajo Conceptual|TC<<n>>_<<Tema>>.pdf|/Teorico/Trabajos Conceptuales/TC<<n>>_<<Tema>>|
