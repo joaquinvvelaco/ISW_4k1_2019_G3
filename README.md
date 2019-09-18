@@ -21,3 +21,4 @@ Este repositorio tiene la finalidad de gestionar y mantener los documentos y arc
 |nn|Numero de Trabajo Practico|
 |TemaP|Tema asociado al Trabajo Practico|
 
+Difinimos una linea base cada vez que rendimos un parcial
