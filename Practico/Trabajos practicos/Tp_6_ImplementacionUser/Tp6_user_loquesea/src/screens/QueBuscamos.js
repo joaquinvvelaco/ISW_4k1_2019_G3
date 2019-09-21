@@ -1,48 +1,53 @@
 import React, { Component } from 'react';
-import {
-  View,
-  ScrollView,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
-import { Layout, Button, Input, Text, withStyles, } from 'react-native-ui-kitten';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import TextStyle from '../contantes/TextStyles';
-import FormDireccion from '../componentes/FormDireccion';
-import ButtonOutLine from '../componentes/ButtonOutLine';
+import { View, ScrollView, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { Layout, Button, Input, withStyles, } from 'react-native-ui-kitten';
 import { Appbar, Snackbar } from 'react-native-paper';
-import * as Colors from '../contantes/Colors';
+import ImagePicker from 'react-native-image-picker';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import TextStyle from '../contantes/TextStyles';
+import ButtonOutLine from '../componentes/ButtonOutLine';
 
 import { connect } from 'react-redux';
-import {QueLlevamos} from '../actions'
+import { QueLlevamos } from '../actions';
 
 var { height, width } = Dimensions.get('window');
 
 class QueBuscamos extends Component {
   state = {
-    imagen:false,
-    articulo:'',
-    error:{
-      state:false,
+    imagen: '',
+    articulo: '',
+    error: {
+      state: false,
       msg: '',
     }
   };
 
-  componentDidMount(){
-    const pedido = this.props.pedido
-    //console.log(this.props)
+  seleccionarImagen = () => {
+    var options = {
+      title: 'Seleccionar una imagen',
+      customButtons: [{ name: 'customOptionKey', title: 'Choose Photo from Custom Option' },],
+      storageOptions: { skipBackup: true, path: 'images',},
+    };
+    ImagePicker.launchImageLibrary(options, (response) => {
+        let source = response;
+        this.setState({ imagen: source });
+    });
+  };
 
-    if(!pedido)return;
-    if(!pedido.text && pedido.text != null) this.setState({articulo: pedido.text})
-    if(!pedido.img && pedido.img != null) this.setState({imagen: pedido.img})
+  componentDidMount() {
+    const pedido = this.props.pedido
+    if (!pedido) return;
+    if (!pedido.text && pedido.text != null) this.setState({ articulo: pedido.text })
+    if (!pedido.img && pedido.img != null) this.setState({ imagen: pedido.img })
   }
 
   mostrarError = (msg) => {
-    this.setState({error:{state:true, msg}})
+    this.setState({ error: { state: true, msg } })
   }
 
   validarCampos = () => {
-    if(!this.state.imagen && !this.state.articulo) {
+    if (!this.state.imagen && !this.state.articulo) {
       this.mostrarError('Subir imagen o una descripción del articulo')
       return false;
     }
@@ -51,12 +56,12 @@ class QueBuscamos extends Component {
 
   onPressContinuar = () => {
     console.log(this.props)
-    if(!this.validarCampos())return;
+    if (!this.validarCampos()) return;
     this.props.QueLlevamos({
-      img:this.state.imagen, 
+      img: this.state.imagen,
       text: this.state.articulo
     })
-    
+
     //CONTINUAR SIGUIENTE VENTANA
   }
 
@@ -66,24 +71,48 @@ class QueBuscamos extends Component {
     </Appbar.Header>
   }
 
+  renderImagen = () => {
+    if (this.state.imagen == '') return;
+    return (
+      <View style={{width:'95%', backgroundColor:'transparent'}} >
+        <Image
+          source={{ uri: this.state.imagen.uri }}
+          style={{ width: '100%', height: 300, borderRadius: 5, marginTop: 5 }}
+        />
+        <TouchableOpacity 
+          style={{backgroundColor:'rgba(183,183,183,0.5)', alignItems:'center', justifyContent:'center', width:40, height:40, borderRadius:90 ,position:'absolute', alignSelf:'flex-end', marginTop:5}}
+          onPress={()=> this.borrarImagen()}
+        >
+          <Icon name='close' size={30} color='white' />
+        </TouchableOpacity>
+
+      </View>
+    );
+  }
+
+  borrarImagen = () => {
+    this.setState({ imagen: '' })
+  }
+
   render() {
     const { themedStyle } = this.props;
     return (
       <View style={{ flex: 1, }}>
         {this.renderHeader(themedStyle)}
         <ScrollView style={{ flex: 1, alignSelf: 'center', width: '95%', paddingVertical: 5 }}>
-        {/* <Text category='h5' style={{ paddingBottom: 5 }}>+ Que quieres que busquemos?</Text> */}
+          {/* <Text category='h5' style={{ paddingBottom: 5 }}>+ Que quieres que busquemos?</Text> */}
 
           <Layout style={{ paddingVertical: 5, justifyContent: 'center', alignItems: 'center', }}>
-            <ButtonOutLine texto='Subí una imagen' icono='photo'></ButtonOutLine>
-            <Input 
+            <ButtonOutLine onPressButton={() => this.seleccionarImagen()} texto='Subí una imagen' icono='photo' onPress></ButtonOutLine>
+            {this.renderImagen()}
+            <Input
               value={this.state.articulo}
-              onChangeText={(value) => this.setState({articulo:value})}
-              style={{ width: '95%', alignSelf: 'center', marginTop: 5 }} 
-              numberOfLines={5} 
-              textAlignVertical='top' 
-              multiline={true} 
-              placeholder='Si no tienes una foto escribinos...'/>
+              onChangeText={(value) => this.setState({ articulo: value })}
+              style={{ width: '95%', alignSelf: 'center', marginTop: 5 }}
+              numberOfLines={5}
+              textAlignVertical='top'
+              multiline={true}
+              placeholder='Si no tienes una foto escribinos...' />
           </Layout>
 
           <Button onPress={() => this.onPressContinuar()} appearance='filled' status='danger' size='giant' style={{ width: '95%', alignSelf: 'center' }}>Continuar</Button>
@@ -91,8 +120,8 @@ class QueBuscamos extends Component {
         </ScrollView>
         <Snackbar
           visible={this.state.error.state}
-          onDismiss={() => this.setState({ error: {state:false} })}
-          style={{backgroundColor:'red',}}
+          onDismiss={() => this.setState({ error: { state: false } })}
+          style={{ backgroundColor: 'red', }}
         >
           {this.state.error.msg}
         </Snackbar>
@@ -100,8 +129,6 @@ class QueBuscamos extends Component {
     );
   }
 };
-
-
 
 const screen = withStyles(QueBuscamos, (theme) => {
   return ({

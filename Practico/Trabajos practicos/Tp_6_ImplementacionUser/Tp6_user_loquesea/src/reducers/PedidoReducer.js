@@ -1,4 +1,4 @@
-export const PedidoReducer = (pedido = {text:'', img: false}, action) => {
+export const PedidoReducer = (pedido = {text:'', img: ''}, action) => {
     switch(action.type){
         case 'NUEVO_PEDIDO':
             return  action.payload;
