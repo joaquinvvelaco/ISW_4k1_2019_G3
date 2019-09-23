@@ -29,6 +29,8 @@ target 'Tp6_user_loquesea' do
 
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'Tp6_user_loqueseaTests' do
     inherit! :search_paths
     # Pods for testing

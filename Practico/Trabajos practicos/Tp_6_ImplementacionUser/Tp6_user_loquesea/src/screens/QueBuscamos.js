@@ -62,11 +62,12 @@ class QueBuscamos extends Component {
       text: this.state.articulo
     })
 
-    //CONTINUAR SIGUIENTE VENTANA
+    this.props.navigation.navigate('DondeBuscamos');
   }
 
   renderHeader = (theme) => {
     return <Appbar.Header style={{ backgroundColor: '#2B82BF' }}>
+      <Appbar.BackAction onPress={() => this.props.navigation.navigate('Menu')} />
       <Appbar.Content title={'¿Que quieres que busquemos?'} />
     </Appbar.Header>
   }
@@ -128,6 +129,10 @@ class QueBuscamos extends Component {
       </View>
     );
   }
+};
+
+QueBuscamos.navigationOptions = {
+  header: null,
 };
 
 const screen = withStyles(QueBuscamos, (theme) => {

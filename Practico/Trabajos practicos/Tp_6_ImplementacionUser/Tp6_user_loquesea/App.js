@@ -9,6 +9,8 @@ import DondeBuscamos from './src/screens/DondeBuscamos'
 import FormaDePago from './src/screens/FormaDePago'
 import DondeEntregamos from './src/screens/DondeEntregamos'
 
+import AppNavigator from './src/navigation/AppNavigator'
+
 import { mapping, light as lightTheme } from '@eva-design/eva';
 import { ApplicationProvider } from 'react-native-ui-kitten';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
@@ -36,7 +38,7 @@ const App = () => {
         <ApplicationProvider
           mapping={mapping}
           theme={lightTheme}>
-          <QueBuscamos />
+          <AppNavigator />
         </ApplicationProvider>
       </PaperProvider>
     </Provider>

@@ -22,11 +22,10 @@ var { height, width } = Dimensions.get('window');
 
 class DondeEntregamos extends Component {
     state = {
-        ubicación: {
-            calle: '',
-            numero: '',
-            ciudad: '',
-        },
+        ubicación: {},
+        calle: '',
+        numero: '',
+        ciudad: '',
         comentario: '',
         error: {
             state: false,
@@ -35,32 +34,37 @@ class DondeEntregamos extends Component {
     }
 
     validarCampos = () => {
-        if (!this.state.ubicación.calle) {
+        if (!this.state.calle) {
             this.mostrarError('Ingresa la calle');
             return false;
         }
-        if (this.state.ubicación.ciudad) {
+        if (!this.state.ciudad) {
             this.mostrarError('Ingresa la ciudad');
             return false;
         }
-        if (this.state.ubicación.numero) {
+        if (!this.state.numero) {
             this.mostrarError('Ingresa el numero de dirección');
             return false;
         }
         return true
     }
-
-    setStateCalle = (calle) => { this.setState({ ubicación: { calle } }) }
-    setStateNumero = (num) => { this.setState({ ubicación: { numero: num } }) }
-    setStateCiudad = (ciudad) => { this.setState({ ubicación: { ciudad } }) }
+    mostrarError = (msg) => {
+        this.setState({ error: { state: true, msg } })
+    }
+    setStateCalle = (calle) => { this.setState({ calle }) }
+    setStateNumero = (numero) => { this.setState({ numero }) }
+    setStateCiudad = (ciudad) => { this.setState({ ciudad }) }
     setStateComentario = (comentario) => { this.setState({ comentario }) }
 
     onPressContinuar = () => {
+        if(!this.validarCampos())return
 
+        this.props.navigation.navigate('FormaDePago');
     }
 
     renderHeader = () => {
         return <Appbar.Header style={{ backgroundColor: '#2B82BF' }}>
+            <Appbar.BackAction onPress={() => this.props.navigation.pop()} />
             <Appbar.Content title={'¿Donde entregamos tu pedido?'} />
         </Appbar.Header>
     }
@@ -74,22 +78,17 @@ class DondeEntregamos extends Component {
                     {/* <Text category='h5' style={{ paddingBottom: 5 }}>+ Donde entregamos tu pedido?</Text> */}
 
                     <Layout style={{ flex: 1, }}>
-                        <Layout style={{ width: '100%', justifyContent: 'center', alignSelf: 'center', alignItems: 'center', marginVertical: 5 }}>
-                            <Text style={[themedStyle.welcomeLabel, { color: 'black', width: '95%', }]}>Selecciona la ubicación en el mapa:</Text>
-                            <ButtonOutLine texto='Ir a google maps' icono='map'></ButtonOutLine>
-                        </Layout>
-
                         <Layout style={{ width: '95%', justifyContent: 'center', alignSelf: 'center', alignItems: 'center', paddingTop: 5 }}>
-                            <Text style={[themedStyle.welcomeLabel, { color: 'black', width: '100%' }]}>O indicanos la dirección:</Text>
+                            <Text style={[themedStyle.welcomeLabel, { color: 'black', width: '100%' }]}>Indicanos la dirección:</Text>
                             <FormDireccion
-                                calle={this.state.ubicación.calle}
-                                onChangeCalle={this.setStateCalle}
-                                numero={this.state.ubicación.numero}
-                                onChangeNumero={this.setStateNumero}
-                                ciudad={this.state.ubicación.ciudad}
-                                onChangeCiudad={this.setStateCiudad}
+                                calle={this.state.calle}
+                                onChangeCalle={(calle) => this.setStateCalle(calle)}
+                                numero={this.state.numero}
+                                onChangeNumero={(numero) => this.setStateNumero(numero)}
+                                ciudad={this.state.ciudad}
+                                onChangeCiudad={(ciudad) => this.setStateCiudad(ciudad)}
                                 comentario={this.state.comentario}
-                                onChangeComentario={this.setStateComentario}
+                                onChangeComentario={(comentario) => this.setStateComentario(comentario)}
                             />
                         </Layout>
                     </Layout>
@@ -100,7 +99,7 @@ class DondeEntregamos extends Component {
                 <Snackbar
                     visible={this.state.error.state}
                     onDismiss={() => this.setState({ error: { state: false } })}
-                    style={{ backgroundColor: 'red', }}
+                    style={{ backgroundColor: 'red', position:'absolute'}}
                 >
                     {this.state.error.msg}
                 </Snackbar>
@@ -108,6 +107,10 @@ class DondeEntregamos extends Component {
         );
     }
 }
+
+DondeEntregamos.navigationOptions = {
+    header: null,
+  };
 
 export default withStyles(DondeEntregamos, (theme) => {
     return ({
