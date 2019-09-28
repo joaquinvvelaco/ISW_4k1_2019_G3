@@ -11,6 +11,8 @@ Este repositorio tiene la finalidad de gestionar y mantener los documentos y arc
 |Trabajo Conceptual|TC\<n>_\<Tema>.pdf|/Teorico/Trabajos Conceptuales/TC\<n>_\<Tema>|
 |Trabajo Practico|TP\<nn>_\<TemaP>.pdf|/Practico/Trabajos Practicos/TC\<nn>_\<TemaP>|
 |Libro teorico|\<NombreLibro>_\<AutorLibro>.pdf|/Teorico/Material de catedra/Biblioteca|  
+|Diapositivas teoricas|\<cc>_\<TemaD>.pdf|/Teorico/Material de catedra/Diapositivas|  
+
   
 |Etiqueta|Valor|
 |--------|-----|
@@ -20,5 +22,6 @@ Este repositorio tiene la finalidad de gestionar y mantener los documentos y arc
 |Tema|Tema asociado al Trabajo Conceptual|
 |nn|Numero de Trabajo Practico|
 |TemaP|Tema asociado al Trabajo Practico|
+|cc|Numero de clase en la que se vieron las diapositivas|
 
 Difinimos una linea base cada vez que rendimos un parcial
