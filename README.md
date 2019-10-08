@@ -34,7 +34,7 @@ Estructura de Carpetas (08/10/2019)
 ┃ ┣ 📂Ejercicios Resueltos  
 ┃ ┗ 📂Trabajos practicos  
 ┃ . ┣ 📂TP3_UserStoriesEstimaciones  
-┃ . ┣ 📂TP7_DinamicaScrum
+┃ . ┣ 📂TP7_DinamicaScrum  
 ┃ . ┗ 📂TP10_TestingCajaBlanca 
 ┣ 📂Teorico  
 ┃ ┣ 📂Material de catedra  
