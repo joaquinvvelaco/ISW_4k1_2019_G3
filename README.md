@@ -35,11 +35,11 @@ Estructura de Carpetas y Archivos (Actualizado 08/10/2019)
 ┃ ┣ 📂Ejercicios Resueltos  
 ┃ ┃ ┗ 📜ISW_Guia_de_Trabajos_Practicos_Resueltos_2019.pdf  
 ┃ ┗ 📂Trabajos practicos  
-┃   ┣ 📂TP3_UserStoriesEstimaciones  
-┃   ┃ ┗ 📜TP3_UserStoriesEstimaciones.pdf  
-┃   ┣ 📂TP7_DinamicaScrum  
-┃   ┃ ┗ 📜TP7_DinamicaScrum.pdf  
-┃   ┗ 📜TrabajosPracticos.pdf  
+┃ ┃ ┣ 📂TP3_UserStoriesEstimaciones  
+┃ ┃ ┃ ┗ 📜TP3_UserStoriesEstimaciones.pdf  
+┃ ┃ ┣ 📂TP7_DinamicaScrum  
+┃ ┃ ┃ ┗ 📜TP7_DinamicaScrum.pdf  
+┃ ┃ ┗ 📜TrabajosPracticos.pdf  
 ┣ 📂Teorico  
 ┃ ┣ 📂Material de catedra  
 ┃ ┃ ┣ 📂Biblioteca  
@@ -57,9 +57,9 @@ Estructura de Carpetas y Archivos (Actualizado 08/10/2019)
 ┃ ┃ ┃ ┗ 📜11_Testing_de_Software_Parte_2.pdf  
 ┃ ┃ ┗ 📜GuiaScrum.pdf  
 ┃ ┗ 📂Trabajos conceptuales  
-┃   ┣ 📂TP1_InformeTecnico  
-┃   ┃ ┣ 📜TC1_FormatoPaperCONAIISI.docx  
-┃   ┃ ┗ 📜TC1_InformeTécnico.pdf  
-┃   ┗ 📜TrabajosConceptuales.pdf  
+┃ ┃ ┣ 📂TP1_InformeTecnico  
+┃ ┃ ┃ ┣ 📜TC1_FormatoPaperCONAIISI.docx  
+┃ ┃ ┃ ┗ 📜TC1_InformeTécnico.pdf  
+┃ ┃ ┗ 📜TrabajosConceptuales.pdf  
 ┗ 📜README.md  
  
