@@ -32,16 +32,12 @@ Estructura de Carpetas (08/10/2019)
 ┣ 📂Modalidad Academica  
 ┣ 📂Practico  
 ┃ ┣ 📂Ejercicios Resueltos  
-┃ ┗ 📂Trabajos practicos  
-┃ . ┣ 📂TP3_UserStoriesEstimaciones  
-┃ . ┣ 📂TP7_DinamicaScrum  
-┃ . ┗ 📂TP10_TestingCajaBlanca  
+┃ ┗ 📂Trabajos practicos   
 ┣ 📂Teorico  
 ┃ ┣ 📂Material de catedra  
 ┃ ┃ ┣ 📂Biblioteca  
 ┃ ┃ ┗ 📂Diapositivas  
-┃ ┗ 📂Trabajos conceptuales  
-┃ . ┗ 📂TP1_InformeTecnico  
+┃ ┗ 📂Trabajos conceptuales   
 ┗ 📜README.md  
 
  
